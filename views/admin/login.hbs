@@ -1,0 +1,23 @@
+<div class="container" style="margin:100px auto;">
+    <div class="row">
+        <div class="col">
+            <form action="/admin/login" method="post">
+            <div class="form-goup">
+                <label for="nombre">NOMBRE</label>
+                <input type="text" class="form-control" id="nombre" aria-describedby="emailHelp" name="nombre">
+
+            </div>
+            <div class="form-grup">
+                <label for="password">PASSWORD</label>
+                <input type="password" class="form-control" id="password" name="password">
+
+            </div>
+            <button style="margin: 5px; auto;" type="submit" class="btn btn-primary">ENVIAR</button>
+            
+            </form>
+            {{#if error}}
+            <p>la cagaste</p>
+            {{/if}}
+        </div>
+    </div>
+</div>
