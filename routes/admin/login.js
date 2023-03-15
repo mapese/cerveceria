@@ -20,6 +20,8 @@ router.get("/", function (req, res, next) {
         var data = await usuariosModel.getUserAndPassword(nombre, password);
 
         if (data != undefined){
+            req.session.id_nombre = data.id;
+            req.session.nombre = data.usuario;
             res.redirect("/admin/novedades");
         } else {
             res.render("admin/login", {
