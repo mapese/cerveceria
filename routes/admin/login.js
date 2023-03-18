@@ -10,14 +10,13 @@ router.get("/", function (req, res, next) {
 
   router.post("/", async (req, res, next) => {
     try {
-
-        
+ 
         var nombre = req.body.nombre;
         var password = req.body.password;
 
         console.log(req.body);
 
-        var data = await usuariosModel.getUserAndPassword(nombre, password);
+        var data = await usuariosModel.getUserByUsernameAndPassword(nombre, password);
 
         if (data != undefined){
             req.session.id_nombre = data.id;
