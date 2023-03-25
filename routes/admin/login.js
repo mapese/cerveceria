@@ -8,19 +8,25 @@ router.get("/", function (req, res, next) {
     });
   });
 
+  router.get('/logout', function (req, res, next) {
+    req.session.destroy();
+    res.render('admin/login', {
+        layout: 'admin/layout'
+    });
+});
+
   router.post("/", async (req, res, next) => {
     try {
- 
+    
         var nombre = req.body.nombre;
         var password = req.body.password;
 
         console.log(req.body);
-
-        var data = await usuariosModel.getUserByUsernameAndPassword(nombre, password);
+        var data = await usuariosModel.getUserAndPassword(nombre, password);
 
         if (data != undefined){
             req.session.id_nombre = data.id;
-            req.session.nombre = data.usuario;
+            req.session.nombre = data.nombre;
             res.redirect("/admin/novedades");
         } else {
             res.render("admin/login", {
